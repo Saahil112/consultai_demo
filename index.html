@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ConsultAI — Morning Brief</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">ConsultAI</div>
+    <nav>
+      <button class="nav-btn active" data-view="dashboard">Today’s Brief</button>
+      <button class="nav-btn" data-view="projects">Projects</button>
+      <button class="nav-btn" data-view="ask">Dive Deeper</button>
+      <button class="nav-btn" data-view="sources">Sources</button>
+      <!-- Settings removed -->
+    </nav>
+    <div class="sidebar-footer">Bob • Consultant</div>
+  </aside>
+
+  <main class="main">
+    <!-- Dashboard -->
+    <section id="dashboard" class="view">
+      <header class="page-header">
+        <div>
+          <h1 tabindex="-1">Good morning, Bob</h1>
+          <p class="muted">Your morning brief for active projects.</p>
+        </div>
+      </header>
+
+      <div class="brief-tiles">
+        <article class="brief-tile" role="button" tabindex="0" onclick="showBrief('delta')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showBrief('delta');}">
+          <div class="tile-top">
+            <h3>Delta Airlines Cost Transformation</h3>
+            <span class="tile-priority high">High Priority</span>
+          </div>
+          <p class="tile-summary">Labor cost pressure is rising and the partner needs sharper evidence for tomorrow's meeting.</p>
+          <h4>Action Items</h4>
+          <ul>
+            <li>Add labor data by station to the partner deck</li>
+            <li>Reuse benchmark slides 12–18 in the narrative</li>
+            <li>Frame recommendations around reliability protection</li>
+          </ul>
+        </article>
+
+        <article class="brief-tile" role="button" tabindex="0" onclick="showBrief('retail')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showBrief('retail');}">
+          <div class="tile-top">
+            <h3>Retail Pricing Diagnostic</h3>
+            <span class="tile-priority medium">Medium Priority</span>
+          </div>
+          <p class="tile-summary">New client data changed the pricing model assumptions and the Friday model draft needs updates.</p>
+          <h4>Action Items</h4>
+          <ul>
+            <li>Refresh margin model with the latest store-level file</li>
+            <li>Recheck promo assumptions in the bridge</li>
+            <li>Pull one reusable promo case from prior work</li>
+          </ul>
+        </article>
+
+        <article class="brief-tile" role="button" tabindex="0" onclick="showBrief('pharma')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showBrief('pharma');}">
+          <div class="tile-top">
+            <h3>Pharma Market Entry</h3>
+            <span class="tile-priority medium">Medium Priority</span>
+          </div>
+          <p class="tile-summary">A competitor deal and a new regulatory note may impact launch timing and channel strategy.</p>
+          <h4>Action Items</h4>
+          <ul>
+            <li>Update timing assumptions with latest regulatory note</li>
+            <li>Integrate interview takeaways into launch options</li>
+            <li>Assess competitor distribution impact on entry plan</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Delta Brief (project brief view) -->
+    <section id="brief-delta" class="view" style="display:none">
+      <header class="brief-header">
+        <div>
+          <h2>Delta Airlines Cost Transformation</h2>
+          <p class="muted">Updated at 8:30 AM · Your morning brief on today's updates.</p>
+        </div>
+        <div class="ask-row">
+          <input id="project-question" placeholder="Questions about this brief?">
+          <button class="btn btn-primary" onclick="openAsk('delta')">Dive Deeper</button>
+        </div>
+      </header>
+
+      <div class="brief-grid">
+        <main class="brief-main">
+          <section class="brief-section">
+            <h3>What's New?</h3>
+            <article class="item">
+              <h4>Q4 earnings show pressure on labor costs</h4>
+              <p>The airline industry is focused on cutting labor waste and improving productivity.</p>
+              <a class="link" data-kind="external" onclick="showResource('q4')">Q4 Earnings</a>
+            </article>
+
+            <article class="item">
+              <h4>Competitors are launching efficiency programs</h4>
+              <p>Other airlines are investing in faster turnarounds and smarter maintenance.</p>
+              <a class="link" data-kind="external" onclick="showResource('news')">Industry News</a>
+            </article>
+
+            <article class="item">
+              <h4>Team needs sharper cost data by Friday</h4>
+              <p>Slack discussion flagged that the current analysis needs more details on labor productivity at each station.</p>
+              <a class="link" data-kind="slack" onclick="showResource('slack')">Slack</a>
+            </article>
+
+            <article class="item">
+              <h4>COO emphasized protecting reliability</h4>
+              <p>The client wants cost improvements that don't compromise on-time performance.</p>
+              <a class="link" data-kind="internal" onclick="showResource('coo')">Meeting Notes from COO Sync</a>
+            </article>
+          </section>
+
+          <section class="brief-section">
+            <h3>Action Items</h3>
+            <ul>
+              <li>Update forecast using latest labor data from the COO email <a class="link" data-kind="email" onclick="showResource('email')">Email</a></li>
+              <li>Add slides 12–18 from the maintenance cost deck to your presentation <a class="link" data-kind="internal" onclick="showResource('benchmark')">Delta Benchmark Deck</a></li>
+              <li>Request station-level labor data from the client before partner meeting</li>
+              <li>Frame savings around reliability, not cost cuts</li>
+            </ul>
+          </section>
+
+          <section class="brief-section">
+            <h3>Considerations</h3>
+            <article class="item">
+              <h4>Competitors are moving fast on efficiency</h4>
+              <p>Peer airlines are already running similar programs. This adds urgency to the project.</p>
+            </article>
+
+            <article class="item">
+              <h4>Use proven playbook from Project Falcon</h4>
+              <p>A past airline engagement showed that reliability-focused messaging works better than cost-cutting talk.</p>
+              <a class="link" data-kind="internal" onclick="showResource('falcon')">Notes from American Airlines Project</a>
+            </article>
+
+            <article class="item">
+              <h4>Frame the narrative around reliability</h4>
+              <p>The COO cares most about protecting performance. Lead with reliability wins in your presentation.</p>
+            </article>
+          </section>
+
+        </main>
+
+        <aside class="brief-sources">
+          <h4>Sources used</h4>
+          <div id="brief-sources-grouped"></div>
+        </aside>
+      </div>
+
+      <div class="brief-footer">
+        <button class="btn btn-outline" onclick="switchView('dashboard')">Back to Today’s Brief</button>
+      </div>
+    </section>
+
+    <!-- Ask AI view -->
+    <section id="ask" class="view" style="display:none">
+      <header class="page-header">
+        <div>
+          <h2>Dive Deeper</h2>
+          <p class="muted">Ask project-scoped questions and jump straight to the source material.</p>
+        </div>
+      </header>
+
+      <div class="ask-shell">
+        <section class="ask-panel ask-intro">
+          <div class="ask-kicker">Project context only</div>
+          <div class="ask-row ask-row--compact">
+            <input id="project-question" placeholder="Ask about the current project...">
+            <button class="btn btn-primary" onclick="openAsk('delta')">Dive Deeper</button>
+          </div>
+          <div class="ask-suggestions">
+            <button class="btn btn-outline" onclick="showResource('q4')">What's new in the industry?</button>
+            <button class="btn btn-outline" onclick="showResource('benchmark')">Which deck has data on labor costs?</button>
+            <button class="btn btn-outline" onclick="showResource('coo')">What was the takeaway from the COO sync?</button>
+          </div>
+        </section>
+
+        <main class="chat-area ask-panel">
+          <div class="chat-message user">What should I know before tomorrow’s partner check-in?</div>
+          <div class="chat-message ai">
+            Focus on three things: labor costs are still the main pressure point, slides 12–18 from the Delta Benchmark Deck have the strongest data, and the client wants efficiency framed as reliability protection rather than cost cutting.
+
+            <div class="source-chips">
+              <button class="ask-source-chip" data-kind="external" data-subgroup="earnings" onclick="showResource('q4')"><span>Q4 Earnings Call</span><span class="source-badge">EARNINGS</span></button>
+              <button class="ask-source-chip" data-kind="internal" data-subgroup="reference" onclick="showResource('benchmark')"><span>Delta Benchmark Deck</span><span class="source-badge">REFERENCE</span></button>
+              <button class="ask-source-chip" data-kind="internal" data-subgroup="meeting-notes" onclick="showResource('coo')"><span>Meeting Notes from COO Sync</span><span class="source-badge">MEETING NOTES</span></button>
+              <button class="ask-source-chip" data-kind="internal" data-subgroup="emails" onclick="showResource('email')"><span>Partner Feedback Email</span><span class="source-badge">EMAIL</span></button>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <div class="brief-footer">
+        <button class="btn btn-outline" onclick="switchView('dashboard')">Back to Today’s Brief</button>
+      </div>
+    </section>
+
+    <!-- Sources Index -->
+    <section id="sources" class="view" style="display:none">
+      <header class="page-header">
+        <h2>Sources</h2>
+        <p class="muted">All sources used across your active projects.</p>
+      </header>
+      <div id="sources-grouped" style="max-width:900px"></div>
+    </section>
+
+    <!-- Source Detail -->
+    <section id="source-detail" class="view" style="display:none">
+      <div class="source-detail-header">
+        <button class="btn btn-ghost" onclick="backToBrief()">← Back to brief</button>
+        <div id="source-badges"></div>
+      </div>
+      <article id="source-detail-container" class="source-content">
+        <h3 id="source-title"></h3>
+        <div class="meta muted" id="source-meta"></div>
+        <div id="source-body" class="source-body"></div>
+        <section class="source-summary-block">
+          <h4>Summary</h4>
+          <p id="source-summary"></p>
+        </section>
+      </article>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="view" style="display:none">
+      <header class="page-header">
+        <h2>Projects</h2>
+      </header>
+
+      <div class="projects-grid">
+        <article class="project-tile">
+          <h3>Delta Airlines Cost Transformation</h3>
+          <div class="project-sources">
+            <div class="project-source-category">
+              <div class="project-source-category-header">External Resources</div>
+              <div class="project-source-category-group">
+                <a class="project-source-row" data-kind="external" data-subgroup="earnings" onclick="showResource('q4')"><span>Q4 Earnings Call</span><span class="source-badge">EARNINGS</span></a>
+                <a class="project-source-row" data-kind="external" data-subgroup="news" onclick="showResource('news')"><span>How Airlines Are Winning With Labor Efficiency</span><span class="source-badge">NEWS</span></a>
+                <a class="project-source-row" data-kind="external" data-subgroup="filing" onclick="showResource('10k')"><span>Delta 10-K Filing</span><span class="source-badge">FILING</span></a>
+              </div>
+            </div>
+            <div class="project-source-category">
+              <div class="project-source-category-header">Email</div>
+              <div class="project-source-category-group">
+                <a class="project-source-row" data-kind="internal" data-subgroup="emails" onclick="showResource('email')"><span>Partner Feedback Email</span><span class="source-badge">EMAIL</span></a>
+              </div>
+            </div>
+            <div class="project-source-category">
+              <div class="project-source-category-header">Internal Resources</div>
+              <div class="project-source-category-group">
+                <a class="project-source-row" data-kind="internal" data-subgroup="reference" onclick="showResource('benchmark')"><span>Delta Benchmark Deck</span><span class="source-badge">REFERENCE</span></a>
+                <a class="project-source-row" data-kind="internal" data-subgroup="reference" onclick="showResource('falcon')"><span>Notes from American Airlines Project</span><span class="source-badge">REFERENCE</span></a>
+              </div>
+            </div>
+            <div class="project-source-category">
+              <div class="project-source-category-header">Meeting Notes</div>
+              <div class="project-source-category-group">
+                <a class="project-source-row" data-kind="internal" data-subgroup="meeting-notes" onclick="showResource('coo')"><span>Meeting Notes from COO Sync</span><span class="source-badge">MEETING NOTES</span></a>
+              </div>
+            </div>
+            <div class="project-source-category">
+              <div class="project-source-category-header">Messages</div>
+              <div class="project-source-category-group">
+                <a class="project-source-row" data-kind="internal" data-subgroup="messages" onclick="showResource('slack')"><span>Team Discussion on Partner Meeting</span><span class="source-badge">MESSAGES</span></a>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="showBrief('delta')">Open Brief</button>
+        </article>
+
+        <article class="project-tile">
+          <h3>Retail Pricing Diagnostic</h3>
+          <div class="project-sources">
+            <div class="project-source-category">
+              <div class="project-source-category-header">Email</div>
+              <div class="project-source-category-group">
+                <a class="project-source-row" data-kind="internal" data-subgroup="emails" onclick="alert('Partner feedback email - coming soon')"><span>Partner Feedback Email</span><span class="source-badge">EMAIL</span></a>
+              </div>
+            </div>
+            <div class="project-source-category">
+              <div class="project-source-category-header">External Resources</div>
+              <div class="project-source-category-group">
+                <a class="project-source-row" data-kind="external" onclick="alert('Promo effectiveness study - coming soon')"><span>Promo Study</span><span class="source-badge">EXTERNAL</span></a>
+                <a class="project-source-row" data-kind="external" onclick="alert('Competitor pricing benchmark - coming soon')"><span>Competitor Pricing</span><span class="source-badge">EXTERNAL</span></a>
+              </div>
+            </div>
+            <div class="project-source-category">
+              <div class="project-source-category-header">Internal Resources</div>
+              <div class="project-source-category-group">
+                <a class="project-source-row" data-kind="internal" data-subgroup="reference" onclick="alert('Store-level margin analysis - coming soon')"><span>Store Analysis</span><span class="source-badge">REFERENCE</span></a>
+                <a class="project-source-row" data-kind="internal" data-subgroup="reference" onclick="alert('Team pricing model notes - coming soon')"><span>Model Notes</span><span class="source-badge">REFERENCE</span></a>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="showBrief('retail')">Open Brief</button>
+        </article>
+
+        <article class="project-tile">
+          <h3>Pharma Market Entry</h3>
+          <div class="project-sources">
+            <div class="project-source-category">
+              <div class="project-source-category-header">External Resources</div>
+              <div class="project-source-category-group">
+                <a class="project-source-row" data-kind="external" onclick="alert('Regulatory pathway analysis - coming soon')"><span>Regulatory Notes</span><span class="source-badge">EXTERNAL</span></a>
+                <a class="project-source-row" data-kind="external" onclick="alert('Competitor deal analysis - coming soon')"><span>Competitor Deal</span><span class="source-badge">EXTERNAL</span></a>
+                <a class="project-source-row" data-kind="external" onclick="alert('Pharma filing analysis - coming soon')"><span>Filing Review</span><span class="source-badge">EXTERNAL</span></a>
+              </div>
+            </div>
+            <div class="project-source-category">
+              <div class="project-source-category-header">Internal Resources</div>
+              <div class="project-source-category-group">
+                <a class="project-source-row" data-kind="internal" data-subgroup="reference" onclick="alert('Expert interview transcripts - coming soon')"><span>Expert Interviews</span><span class="source-badge">REFERENCE</span></a>
+                <a class="project-source-row" data-kind="internal" data-subgroup="reference" onclick="alert('Launch timeline and assumptions - coming soon')"><span>Launch Timeline</span><span class="source-badge">REFERENCE</span></a>
+                <a class="project-source-row" data-kind="internal" data-subgroup="reference" onclick="alert('Channel strategy framework - coming soon')"><span>Channel Strategy</span><span class="source-badge">REFERENCE</span></a>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="showBrief('pharma')">Open Brief</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- Settings removed -->
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
